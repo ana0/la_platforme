@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ugly website</title>
+
+        <style>
+            body {
+                
+            }
+        </style>
+
+        <!-- This is external javascript for interacting with the blockchain -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js" integrity="sha512-vtUOC0YIaNm/UutU7yfnwqnF9LOYnXtpHe2kwi1nvJNloeGQuncNBiEKP/3Ww3D62USAhbXGsnYpAYoiDsa+wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="metadata.json"></script>
+    </head>
+
+    <body>
+        <p>You can see the website!</p>
+
+        <script type="text/javascript">
+            window.onload = async function(){
+                console.log("testing connection ...")
+                const web3 = new Web3(new Web3.providers.HttpProvider(
+                  'http://127.0.0.1:8545/',
+                ));
+                const block = await web3.eth.getBlock("latest");
+                console.log(block)
+
+                const contract = new web3.eth.Contract(tokenAbi, "0x5FbDB2315678afecb367f032d93F642f64180aa3");
+
+                const account = "0xdD2FD4581271e230360230F9337D5c0430Bf44C0"
+                console.log("getting info for account " + account)
+                const balance = await contract.methods.balanceOf(account).call();
+                console.log("balance is", balance);
+
+            }
+        </script>
+    </body>
+</html>
