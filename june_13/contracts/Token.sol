@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "./2_Owner.sol";
+
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
@@ -8,12 +10,12 @@ pragma solidity ^0.8.9;
  * @title Token
  * @dev An implementation of ERC 20
  */
-contract Token {
+contract Token is Owner {
     // @dev All public variables have built in getters
-    string public name = "Indulgences";
-    string public symbol = "IND";
-    uint8 public decimals = 18;
-    uint256 public totalSupply = 100;
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+    uint256 public totalSupply;
 
     mapping(address => uint256) balances;
     mapping(address => mapping(address => uint256)) allowances;
@@ -23,6 +25,20 @@ contract Token {
     /// Approval should be emitted whenever someone approves a spender on their account
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
+    constructor(
+        // only called once!!
+        // string storage 
+        string memory _nameInMemory,
+        string memory _symbolInMemory,
+        uint8 _decimalsInMemory
+        ) {
+        name = _nameInMemory;
+        symbol = _symbolInMemory;
+        decimals = _decimalsInMemory;
+        totalSupply = 0;
+        // I don't need _nameInMemory anymore, because I stored name
+    }
+
     /// @notice Returns the balance of a given address
     /// @dev A custom getter for the balances mapping
     /// @param _owner Any address
@@ -31,10 +47,18 @@ contract Token {
         return balances[_owner];
     }
 
-    /// @notice Mints 10 tokens to the given address
+    /// @notice Sets a new token name and can only be called by owner
+    /// @param newName Any string
+    function setName(string memory newName) public isOwner {
+        name = newName;
+    }
+
+    /// @notice Mints 10 tokens to the given address and can only be called by owner
     /// @param _owner Any address
-    function mint(address _owner) public {
+    function mint(address _owner) public isOwner {
         balances[_owner] += 10;
+        totalSupply += 10;
+        emit Transfer(address(0), _owner, 10);
     }
 
     /// @notice Moves tokens from the sender to a given address
@@ -49,6 +73,26 @@ contract Token {
         balances[_to] += _value;
         emit Transfer(msg.sender, _to, _value);
         return true;
+    }
+
+    /// @notice Allows anyone to exchange any amount of base currency for tokens
+    /// @dev Uses a 1:1 exchange rate
+    function buy() payable public {
+        balances[msg.sender] += msg.value;
+        totalSupply += msg.value;
+        emit Transfer(address(0), msg.sender, msg.value);
+    }
+
+    /// @notice Allows anyone to sell tokens for base currency, if the contract has enough reserve
+    /// @dev Uses a 1:1 exchange rate
+    /// @param sellAmount The amount to sell
+    function sell(uint256 sellAmount) public {
+        require(address(this).balance >= sellAmount, "Contract doesn't have enough balance to sell");
+        require(balances[msg.sender] >= sellAmount, "Sorry you are poor");
+        balances[msg.sender] -= sellAmount;
+        totalSupply -= sellAmount;
+        payable(msg.sender).transfer(sellAmount);
+        emit Transfer(msg.sender, address(0), sellAmount);
     }
 
     /// @notice Moves tokens from one address to another - can only be used by approved accounts

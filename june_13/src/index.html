@@ -11,6 +11,10 @@
 
         <!-- This is external javascript for interacting with the blockchain -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.8.1/web3.min.js" integrity="sha512-vtUOC0YIaNm/UutU7yfnwqnF9LOYnXtpHe2kwi1nvJNloeGQuncNBiEKP/3Ww3D62USAhbXGsnYpAYoiDsa+wA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- import web3 and local metadata -->
+        <!-- metadata is the abi or application binary interface, you need
+            it to interact with contracts in code
+         -->
         <script type="text/javascript" src="metadata.json"></script>
     </head>
 
@@ -21,7 +25,7 @@
             window.onload = async function(){
                 console.log("testing connection ...")
                 const web3 = new Web3(new Web3.providers.HttpProvider(
-                  'http://127.0.0.1:8545/',
+                  'https://goerli.infura.io/v3/7a0a5adcdb614bcdbeb44895d778c4b5',
                 ));
                 const block = await web3.eth.getBlock("latest");
                 console.log(block)
