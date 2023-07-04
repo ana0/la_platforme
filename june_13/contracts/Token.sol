@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-import "./2_Owner.sol";
+import "./Owner.sol";
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";

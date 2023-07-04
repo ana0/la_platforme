@@ -7,10 +7,8 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
 
-  const token = await hre.ethers.deployContract("Token");
+  const token = await hre.ethers.deployContract("Token", ["Test", "TST", 18]);
 
   await token.waitForDeployment();
 

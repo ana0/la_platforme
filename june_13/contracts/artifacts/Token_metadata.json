@@ -1,0 +1,511 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_nameInMemory",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_symbolInMemory",
+						"type": "string"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_decimalsInMemory",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "remaining",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "buy",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "changeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "sellAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "sell",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "newName",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "An implementation of ERC 20",
+			"kind": "dev",
+			"methods": {
+				"allowance(address,address)": {
+					"details": "A custom getter for the allowances mapping",
+					"params": {
+						"_owner": "Any address"
+					},
+					"returns": {
+						"remaining": "The current allowance"
+					}
+				},
+				"approve(address,uint256)": {
+					"params": {
+						"_spender": "The person who is receiving permission",
+						"_value": "The amount of tokens to allowed to be spent"
+					},
+					"returns": {
+						"success": "Returns true if success"
+					}
+				},
+				"balanceOf(address)": {
+					"details": "A custom getter for the balances mapping",
+					"params": {
+						"_owner": "Any address"
+					},
+					"returns": {
+						"balance": "The current balance"
+					}
+				},
+				"buy()": {
+					"details": "Uses a 1:1 exchange rate"
+				},
+				"changeOwner(address)": {
+					"details": "Change owner",
+					"params": {
+						"newOwner": "address of new owner"
+					}
+				},
+				"getOwner()": {
+					"details": "Return owner address ",
+					"returns": {
+						"_0": "address of owner"
+					}
+				},
+				"mint(address)": {
+					"params": {
+						"_owner": "Any address"
+					}
+				},
+				"sell(uint256)": {
+					"details": "Uses a 1:1 exchange rate",
+					"params": {
+						"sellAmount": "The amount to sell"
+					}
+				},
+				"setName(string)": {
+					"params": {
+						"newName": "Any string"
+					}
+				},
+				"transfer(address,uint256)": {
+					"params": {
+						"_to": "The recipient of the transfer",
+						"_value": "The amount of tokens to move"
+					},
+					"returns": {
+						"success": "Returns true if success"
+					}
+				},
+				"transferFrom(address,address,uint256)": {
+					"params": {
+						"_from": "The person whose tokens are being spent",
+						"_to": "The recipient of the transfer",
+						"_value": "The amount of tokens to move"
+					},
+					"returns": {
+						"success": "Returns true if success"
+					}
+				}
+			},
+			"title": "Token",
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"Approval(address,address,uint256)": {
+					"notice": "Approval should be emitted whenever someone approves a spender on their account"
+				},
+				"Transfer(address,address,uint256)": {
+					"notice": "Transfer event should be emitted whenever tokens move between addresses"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"allowance(address,address)": {
+					"notice": "Returns the amount of owners' tokens that spender is allowed to transfer"
+				},
+				"approve(address,uint256)": {
+					"notice": "Approve a third party address to spend the tokens of transaction sender"
+				},
+				"balanceOf(address)": {
+					"notice": "Returns the balance of a given address"
+				},
+				"buy()": {
+					"notice": "Allows anyone to exchange any amount of base currency for tokens"
+				},
+				"mint(address)": {
+					"notice": "Mints 10 tokens to the given address and can only be called by owner"
+				},
+				"sell(uint256)": {
+					"notice": "Allows anyone to sell tokens for base currency, if the contract has enough reserve"
+				},
+				"setName(string)": {
+					"notice": "Sets a new token name and can only be called by owner"
+				},
+				"transfer(address,uint256)": {
+					"notice": "Moves tokens from the sender to a given address"
+				},
+				"transferFrom(address,address,uint256)": {
+					"notice": "Moves tokens from one address to another - can only be used by approved accounts"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Token.sol": "Token"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Owner.sol": {
+			"keccak256": "0xcb484ec6a2259b0f1fcb97a0bf0276cfe29e5dbf9562532b8eedc68ecde4e9eb",
+			"urls": [
+				"bzz-raw://c07c4cbe282ccca7ba83306485996ce1d583debe1fa71ac107f6650461f65761",
+				"dweb:/ipfs/QmNouZx4aVDUZAyDd1c2SoVHhoXAL2Z9xDN9pFQcdg9GJw"
+			]
+		},
+		"contracts/Token.sol": {
+			"keccak256": "0x9e6d8caf38862df0df261851487eba0d06cb93dae3e4edcc16630a5cec18c2c9",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://38cf22b04755725af6b8a7deb8baf2c577e236bc003f781dda3f3bc0cc23d804",
+				"dweb:/ipfs/QmaoMyiFnhugC4QVXuYiE9zFUtC4vLWi4cfqUB1YAQqPQ9"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x60b0215121bf25612a6739fb2f1ec35f31ee82e4a8216c032c8243d904ab3aa9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6e29880d33dd479bb046ba306993d26ccb779a4b1d94a046cb3567f22948bb4d",
+				"dweb:/ipfs/QmfTY1qzPt5C63Wc7y6JqfZr5899NRvXYdCpyLzR5FXQic"
+			]
+		}
+	},
+	"version": 1
+}
