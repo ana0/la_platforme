@@ -21,7 +21,7 @@ describe("Token", function () {
     // Build the contract object, using the exact name of the contract
     // for each test, we deploy a fresh version of the contract
     const Token = await ethers.getContractFactory("Token");
-    token = await Token.deploy();
+    token = await Token.deploy("Test", "TEST", 18);
   });
 
   // test that before any tokens have been minted, the balance returns 0
@@ -33,9 +33,9 @@ describe("Token", function () {
   // test that the mint function correctly mints to the given address
   it("test mint", async function () {
     console.log('token deployed at:', token.target);
-    const tx = await token.connect(signers[1]).mint(signers[1].address)
+    const tx = await token.connect(signers[0]).mint(signers[0].address)
     await tx.wait();
-    expect(await token.balanceOf(signers[1].address)).to.equal(10);
+    expect(await token.balanceOf(signers[0].address)).to.equal(10);
   });
 
   // test that the transfer deducts tokens from the tx sender
