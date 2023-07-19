@@ -20,6 +20,8 @@ contract Token is Owner {
     mapping(address => uint256) balances;
     mapping(address => mapping(address => uint256)) allowances;
 
+    // changing my token
+
     /// Transfer event should be emitted whenever tokens move between addresses
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
     /// Approval should be emitted whenever someone approves a spender on their account
